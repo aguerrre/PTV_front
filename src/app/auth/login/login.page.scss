@@ -1,0 +1,60 @@
+ion-card {
+    --ion-background-color: transparent;
+    box-shadow: none !important;
+    width: 90%;
+    margin-top: 40%;
+}
+
+.wrapform {
+    margin-top: 30px;
+}
+
+.itemform {
+    max-width: 70% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inputform {
+    margin-left: 20px;
+}
+
+ion-item {
+    color: #74787E;
+    --border-color: #000;
+    --highlight-color-focused: #647B9D;
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    font-size: 12px;
+
+    ion-input {
+        color: #647B9D;
+    }
+}
+
+.valid-field {
+    --border-color: var(--ion-color-success) !important;
+}
+
+.invalid-field {
+    --border-color: var(--ion-color-danger) !important;
+}
+
+.invalid-feedback {
+    color: var(--ion-color-danger);
+    font-size: 12px;
+    max-width: 70% !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px
+}
+
+.login-btn-wrap {
+    text-align: center;
+    padding-top: 20px;
+
+    login-btn {
+        --ion-primary-color: #215AB7;
+        color: #F4F6FA;
+    }
+}

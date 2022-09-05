@@ -1,20 +1,61 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-badge color="dark" slot="start">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <span> {{this.authService.user.name}}</span>
+    </ion-badge>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+        Cerrar sesión
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Formulario</ion-title>
+      <ion-spinner *ngIf="loading" slot="end" name="dots" color="primary"></ion-spinner>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-card>
+      <ion-card-content>
+        <div class="ion-text-start ion-margin-bottom">
+          <p>Nombre: </p>
+          <ion-item>
+            {{this.authService.user.name}}
+          </ion-item>
+        </div>
+        <div class="ion-text-start ion-margin-bottom">
+          <p>Email: </p>
+          <ion-item>
+            {{this.authService.user.email}}
+          </ion-item>
+        </div>
+        <div>
+          <p class="ion-text-start">Firma: </p>
+          <div class="ion-margin-bottom ion-margin-top">
+          <canvas #canvas (touchstart)="startDrawing($event)" (touchmove)="moved($event)"></canvas>
+          <div class="ion-row invalid-feedback ion-text-start" *ngIf="!this.signatureValid && this.formSubmitted">
+            <div class="ion-col">
+              <span>Debe firmar el documento.</span>
+            </div>
+          </div>
+        </div>
+        <ion-grid>
+          <ion-row>
+            <ion-button color="danger" (click)="clearPad()">Limpiar firma</ion-button>
+          </ion-row>
+          <ion-row>
+            <ion-button color="secondary" (click)="savePad()">Guardar y enviar por email</ion-button>
+          </ion-row>
+        </ion-grid>
+  </div>
+  </ion-card-content>
+  </ion-card>
   </div>
 </ion-content>

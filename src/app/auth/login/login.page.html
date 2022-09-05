@@ -1,0 +1,52 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <div>
+        <ion-img alt="logo ptv" src="assets/logo.png"></ion-img>
+      </div>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="wrapform">
+        <form (submit)="login()" [formGroup]="loginForm">
+          <div>
+            <ion-item class="itemform" rounded-corners
+              [ngClass]="{'invalid-field' : notValidField('dni') && this.formSubmitted, 'valid-field': !notValidField('dni') && this.formSubmitted}">
+              <ion-icon name="person-outline"></ion-icon>
+              <ion-input class="inputform" type="text" placeholder="DNI" required formControlName="dni">
+              </ion-input>
+            </ion-item>
+            <div class="ion-row invalid-feedback" *ngIf="notValidField('dni')">
+              <div class="ion-col">
+                <span>Debe introducir un dni.</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <ion-item class="itemform" rounded-corners
+              [ngClass]="{'invalid-field' : notValidField('user') && this.formSubmitted, 'valid-field': !notValidField('user') && this.formSubmitted}">
+              <ion-icon name="lock-closed-outline"></ion-icon>
+              <ion-input class="inputform" [type]="viewPass ? 'text':'password'" placeholder="Código de usuario"
+                required formControlName="user">
+              </ion-input>
+              <ion-icon [name]="viewPass ? 'eye-outline':'eye-off-outline'" (click)="changePassVisibility()"></ion-icon>
+            </ion-item>
+            <div class="ion-row invalid-feedback" *ngIf="notValidField('user')">
+              <div class="ion-col">
+                <span>Debe introducir un código de usuario.</span>
+              </div>
+            </div>
+          </div>
+          <div class="login-btn-wrap">
+            <ion-row>
+              <ion-col text-center>
+                <ion-button type="submit" color="medium" shape="round" fill="solid" class="login-btn">
+                  Iniciar sesión
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </div>
+        </form>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
